@@ -1,0 +1,28 @@
+From 0f1ebc6324edf3661471d19173270dda876c5a85 Mon Sep 17 00:00:00 2001
+From: Liu Wenyuan <15816141883@163.com>
+Date: Thu, 5 Oct 2023 14:42:47 +0800
+Subject: [PATCH] camera: fix build failure with some kernels
+
+fcntl.h was not included
+
+Change-Id: I7c05a2e8b5b5fb1afb347e275182d578b2c8767f
+---
+ camera/device/1.0-legacy/CameraDevice.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/camera/device/1.0-legacy/CameraDevice.cpp b/camera/device/1.0-legacy/CameraDevice.cpp
+index f324e45..a2ca951 100644
+--- a/camera/device/1.0-legacy/CameraDevice.cpp
++++ b/camera/device/1.0-legacy/CameraDevice.cpp
+@@ -24,6 +24,8 @@
+ #include <media/hardware/HardwareAPI.h> // For VideoNativeHandleMetadata
+ #include "CameraDevice_1_0.h"
+ 
++#include <fcntl.h>
++
+ namespace android {
+ namespace hardware {
+ namespace camera {
+-- 
+2.34.1
+
